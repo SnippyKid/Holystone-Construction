@@ -8,7 +8,7 @@ HOLYSTONE Construction Company specializes in residential construction, transfor
 
 **Leadership:**
 - **Deepak Sadanand Hanchate** - Chairman & M.D.
-- **Dheeraj Sadanand Hanchate** - Director
+- **Dhiraj Sadanand Hanchate** - Director
 
 ## ✨ Features
 
@@ -112,4 +112,4 @@ The website is optimized for:
 
 **Built with ❤️ for HOLYSTONE Construction Company**
 
-*Building dreams with precision and excellence since 2005.*
+*Building dreams with precision and excellence since 2014.*

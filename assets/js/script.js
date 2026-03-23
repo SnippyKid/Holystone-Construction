@@ -11,28 +11,51 @@ if (typeof gsap !== 'undefined') {
 function initMobileMenu() {
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
-    
+
+    // Inject overlay element if not already present
+    let overlay = document.querySelector('.nav-overlay');
+    if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.className = 'nav-overlay';
+        document.body.appendChild(overlay);
+    }
+
+    function openMenu() {
+        hamburger.classList.add('active');
+        navLinks.classList.add('active');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeMenu() {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
     if (hamburger && navLinks) {
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navLinks.classList.toggle('active');
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            hamburger.classList.contains('active') ? closeMenu() : openMenu();
         });
-        
+
         // Close menu when clicking on a link
-        const links = navLinks.querySelectorAll('a');
-        links.forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navLinks.classList.remove('active');
-            });
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', closeMenu);
         });
-        
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
-                hamburger.classList.remove('active');
-                navLinks.classList.remove('active');
-            }
+
+        // Close menu when clicking overlay
+        overlay.addEventListener('click', closeMenu);
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeMenu();
+        });
+
+        // Close if window resized to desktop
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) closeMenu();
         });
     }
 }

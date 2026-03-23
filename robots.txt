@@ -1,0 +1,17 @@
+# HOLYSTONE Construction - robots.txt
+# https://holystoneconstruction.com
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://holystoneconstruction.com/sitemap.xml
+
+# Block access to asset internals (fonts, etc.)
+Disallow: /assets/font/
+
+# Allow images and CSS/JS for rendering
+Allow: /assets/images/
+Allow: /assets/css/
+Allow: /assets/js/
+Allow: /assets/logo/
